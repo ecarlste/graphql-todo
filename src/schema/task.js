@@ -1,4 +1,4 @@
-import { Task, TaskTC } from '../models/task';
+import { TaskTC } from '../models/task';
 
 const TaskQuery = {
   taskById: TaskTC.getResolver('findById'),
