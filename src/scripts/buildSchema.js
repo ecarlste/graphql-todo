@@ -6,8 +6,12 @@ import { introspectionQuery, printSchema } from 'graphql/utilities';
 import Schema from '../schema';
 
 async function buildSchema() {
-  await fs.ensureFile('../data/schema.graphql.json');
-  await fs.ensureFile('../data/schema.graphql');
+  try {
+    await fs.ensureFile(path.join(__dirname, '../data/schema.graphql.json'));
+    await fs.ensureFile(path.join(__dirname, '../data/schema.graphql.txt'));
+  } catch (e) {
+    console.log(e);
+  }
 
   fs.writeFileSync(
     path.join(__dirname, '../data/schema.graphql.json'),
